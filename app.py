@@ -26,5 +26,7 @@ valorPorDefecto= "No es minerales"
 resultadoMerge=dfArchivoParaTrabajar.merge(dfdiccionario, on='NANDINA', how='left').fillna(valorPorDefecto)
 print("resultado merge")
 #exportamos a excel
-with pd.ExcelWriter('hola.xlsx') as writer:  # pylint: disable=abstract-class-instantiated
-    resultadoMerge.to_excel(writer, sheet_name='Resumena') 
+def generarExcel(dfAExportar,nombreExcel,nombrePestana):
+    with pd.ExcelWriter(nombreExcel) as writer:  # pylint: disable=abstract-class-instantiated
+        dfAExportar.to_excel(writer, sheet_name=nombrePestana) 
+generarExcel(resultadoMerge,"prueba.xlsx","pestanin")
